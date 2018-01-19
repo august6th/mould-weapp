@@ -1,0 +1,106 @@
+<!--detail.wxml-->
+<view class="container">
+
+  <loading hidden="{{loading_hidden}}">
+    {{loading_msg}}
+  </loading>
+
+  <view class="page-body">
+    <view class="page__bd">
+
+      <view class="thread_title-cell">
+        <view class="thread_data-title">{{thread_data.subject}}</view>
+        <view class="thread_data-sub">
+          <view class="thread_data-info"> 
+            阅读:{{thread_data.views}} 回复:{{thread_data.replies}} 
+          </view>
+          <view class="thread_data-fid">
+            {{thread_data.fid_name}}
+          </view>
+        </view>
+      </view>
+
+      <view class="thread_content-cell">
+        <view class="article-info">
+          <view class="article-author">
+            <view>
+              <image class="article-author-icon" src="{{thread_data.author_avatar}}"/>
+            </view>
+            <view class="article-author-info">
+              <view>{{thread_data.author}}</view>
+              <view>{{thread_data.create_time}}</view>
+            </view>
+          </view>
+          <view class="article-author-position">
+            <view>楼主</view>
+          </view>
+        </view>
+
+        <import src="/wxParse/wxParse.wxml"/>
+        <template is="wxParse" data="{{wxParseData:thread_data.message.nodes}}"/>
+        <!-- <text>
+          {{thread_data.message}}
+        </text> -->
+
+        <view>
+          <block wx:for="{{thread_data.image_list}}" wx:for-item="image" wx:key="imageId" >
+            <view>
+              <image class="thread_image" mode="widthFix" src="{{image}}" data-src="{{image}}" data-image_list="{{thread_data.image_list}}" bindtap="previewImage"></image>
+            </view>
+          </block>
+        </view>
+
+      </view>
+
+      <view>
+        <view class="resp-head">全部回复（{{thread_data.replies}}）</view>
+        <block wx:for="{{articleList}}" wx:for-item="article" wx:key="articleId">
+          <view class="article">
+            <view class="article-info">
+              <view class="article-author">
+                <view>
+                  <image class="article-author-icon" src="{{article.author_avatar}}"/>
+                </view>
+                <view class="article-author-info">
+                  <view>{{article.author}}</view>
+                  <view>{{article.create_time}}</view>
+                </view>
+              </view>
+              <view class="article-author-position">
+                <view>{{article.position}}楼</view>
+              </view>
+            </view>
+
+            <view class="article-content">
+              <view>
+                {{article.message}}
+              </view>
+            </view>
+          
+          </view>
+
+        </block>
+
+        <view class="page-tail-space"></view>
+      </view>
+
+    </view>
+    
+  </view>
+  
+
+  <view class="page-tail">
+    <view class="resp-cell">
+
+      <view class="resp-input-cell">
+        <input class="resp-input" type="text" placeholder="评论" bindinput="input_message" value="{{message}}"/>
+      </view>
+      
+      <view class="resp-btn" bindtap="submit_message">
+        回复
+      </view>
+
+    </view>
+  </view>
+
+</view>

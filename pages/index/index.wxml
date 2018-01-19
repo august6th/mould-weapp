@@ -1,0 +1,50 @@
+<!--index.wxml-->
+<view class="container">
+
+  <loading hidden="{{loading_hidden}}">
+    {{loading_msg}}
+  </loading>
+  
+  <view class="page-body">
+    <view class="page__bd">
+      <view>
+
+        <block wx:for="{{articleList}}" wx:for-item="article">
+
+          <view class="article" bindtap="toDetail" data-tid="{{article.tid}}">
+            
+            <view class="article-content">
+              <view class="article-msg">
+
+                <view class="article-title">
+                  {{article.subject}}
+                </view>
+
+                <view class="article-info">  
+                  <view class="article-fid">
+                    <view class="article-fid-item">{{article.fid_name}}</view>
+                  </view>
+                </view>
+                
+              </view>
+
+              <block wx:if="{{article.image_list.length > 0}}">
+                <view  class="article-img">
+                  <image class="article-img-item" src='{{article.image_list[0]}}'></image>
+                </view>
+              </block>
+            </view>
+            
+            <view class="article-author">
+              <view>{{article.author}} · {{article.create_time}}</view>
+              <view>阅读{{article.views}} 回复{{article.replies}}</view>
+            </view>
+
+          </view>
+
+        </block>
+
+      </view>
+    </view>
+  </view>
+</view>

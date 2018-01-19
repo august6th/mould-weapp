@@ -1,0 +1,63 @@
+<!--user.wxml-->
+<view class="container">
+
+  <loading hidden="{{loading_hidden}}">
+        {{loading_msg}}
+  </loading>
+
+  <view class="page-head">
+    <view class="page-head-info">
+        <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}"></image>
+        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </view>
+  </view>
+
+  <view class="page-body">
+    <view class="weui-cells">
+
+      <block wx:if="{{hasUserInfo === false}}">
+        
+        <view class="navigator" bindtap="wxlogin">
+          <view class="navigator-text">微信登录</view>
+          <view class="navigator-arrow"></view>
+        </view>
+        
+        <navigator url="../login/login" class="navigator">
+          <view class="navigator-text">账号登录</view>
+          <view class="navigator-arrow"></view>
+        </navigator>
+        <!--
+        <navigator url="../register/register" class="navigator">
+          <view class="navigator-text">账号注册</view>
+          <view class="navigator-arrow"></view>
+        </navigator>
+        -->
+      </block>
+      
+      <block wx:if="{{hasUserInfo === true}}">
+        <navigator url="../self_thread/self_thread" class="navigator">
+          <view class="navigator-text">我的帖子</view>
+          <view class="navigator-arrow"></view>
+        </navigator>
+        <navigator url="../self_post/self_post" class="navigator">
+          <view class="navigator-text">我的回复</view>
+          <view class="navigator-arrow"></view>
+        </navigator>
+      </block>
+
+      <view style='display:none'>
+        <navigator url="pages/{{page.url}}" class="navigator">
+          <view class="navigator-text">关于我们</view>
+          <view class="navigator-arrow"></view>
+        </navigator>
+      </view>
+    </view>
+
+    <block wx:if="{{hasUserInfo === true}}">
+      <view class="btn-area">
+        <button class="weui-btn" type="warn" bindtap="logout">退出登录</button>
+      </view>
+    </block>
+
+  </view>
+</view>
