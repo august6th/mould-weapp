@@ -4,7 +4,7 @@ var app = getApp()
 Page({
   data: {
     articleList: [],
-    page_size: 5,
+    page_size: 10,
     page_index: 0,
     loading_hidden: true,
     loading_msg: '加载中...',

@@ -5,10 +5,10 @@ App({
     wx.getUserInfo({
       success: function (res) {
         console.log(res.userInfo);
+        console.log('获取微信信息成功')
         that.globalData.userInfo = res.userInfo;
       }
     });
-
     that.get_token();
   },
 
@@ -40,7 +40,7 @@ App({
                   }
                 })
               } else {
-                that.showSvrErrModal(resp);
+                that.showSvrErrModal(resp)
               }
             }
           })
@@ -117,7 +117,7 @@ App({
   },
 
   globalData: {
-    svr_url: 'https://lh2.mouldzj.com/wmapi/',
+    svr_url: 'http://lh2.mouldzj.com/wmapi/',
     userInfo: null,
   }
 })

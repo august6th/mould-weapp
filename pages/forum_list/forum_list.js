@@ -1,6 +1,5 @@
 // pages/forum_list/forum_list.js
 Page({
-
   data: {
     fid: 0,
     articleList: [],

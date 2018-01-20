@@ -48,11 +48,11 @@
 
 .article-info .article-author{
   color:#2D2E2F;
-  font-size:28rpx;
+  font-size:26rpx;
 }
 
 .article-info .article-fid-item{
-  font-size:28rpx;
+  font-size:26rpx;
   color: #FF6A6A;
 }
 
