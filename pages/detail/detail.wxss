@@ -1,5 +1,4 @@
 /* detail.wxss */
-@import "../../weui_style/weui.wxss";
 @import "/wxParse/wxParse.wxss";
 
 .thread_title-cell {

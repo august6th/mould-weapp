@@ -18,7 +18,6 @@ Page({
         success: function (res) {
           if (res.code) {
             console.log(res);
-
             that.setData({
               loading_hidden: false,
               loading_msg: '加载中...'
@@ -172,5 +171,4 @@ Page({
       },
     }
   },
-
 })

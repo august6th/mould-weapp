@@ -117,7 +117,7 @@ App({
   },
 
   globalData: {
-    svr_url: 'http://localhost/wmapi/',
+    svr_url: 'https://lh2.mouldzj.com/wmapi/',
     userInfo: null,
   }
 })

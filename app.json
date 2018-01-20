@@ -12,13 +12,16 @@
     "pages/add_forum_article/add_forum_article"
   ],
   "window": {
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "#323840",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "中国模具论坛",
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": false
   },
   "tabBar": {
+    "color": "#CDC9C9",
+    "selectedColor": "#FF6A6A",
+    "borderStyle": "white",
     "list": [
       {
         "pagePath": "pages/index/index",

@@ -2,7 +2,6 @@
 <view class="container">
   <view class="page-body">
     <view class="page__bd">
-
       <view class="forum_info">
         <view class="forum_title">
           {{forum_data.name}}
@@ -46,6 +45,9 @@
 
                 <view class="article-title">
                   {{article.subject}}
+                </view>
+                <view>
+                  {{article.message}}
                 </view>
 
                 <view class="article-info">  

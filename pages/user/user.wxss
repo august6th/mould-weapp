@@ -1,6 +1,4 @@
 /* user.wxss */
-@import "../../weui_style/weui.wxss";
-
 .page-head-info {
   padding-bottom: 0;
   display: flex;

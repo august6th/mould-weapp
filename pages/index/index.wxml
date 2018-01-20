@@ -1,50 +1,53 @@
 <!--index.wxml-->
 <view class="container">
-
   <loading hidden="{{loading_hidden}}">
     {{loading_msg}}
   </loading>
   
   <view class="page-body">
     <view class="page__bd">
-      <view>
-
         <block wx:for="{{articleList}}" wx:for-item="article">
-
           <view class="article" bindtap="toDetail" data-tid="{{article.tid}}">
-            
             <view class="article-content">
-              <view class="article-msg">
-
-                <view class="article-title">
-                  {{article.subject}}
+              <view class="article-header">
+                <view class="article-author-avatar">
+                  <image src='{{article.avatar}}'></image>
                 </view>
-
-                <view class="article-info">  
-                  <view class="article-fid">
+                <view class="article-side-header">
+                  <view class="article-sub-header">
+                    <view class="article-title">{{article.subject}}</view>
+                  </view>
+                  <view class="article-info">
+                    <view class="article-author">{{article.author}}</view>   
+                    <view class="article-in">in</view>
                     <view class="article-fid-item">{{article.fid_name}}</view>
                   </view>
                 </view>
-                
               </view>
-
               <block wx:if="{{article.image_list.length > 0}}">
                 <view  class="article-img">
-                  <image class="article-img-item" src='{{article.image_list[0]}}'></image>
+                  <view class="article-img-info">
+                    <image class="article-img-item" src='{{article.image_list[0]}}'></image>
+                  </view>
                 </view>
               </block>
+              <block wx:if="{{article.message}}">
+              <view class="article-message">
+                {{article.message}}
+              </view>
+              </block>
+            <view class="article-ext-info">
+              <view class="article-re">
+                <view class="zan-icon zan-icon-password-view"></view> 
+                <view>{{article.views}}</view>
+                <view class="zan-icon zan-icon-chat"></view>
+                <view>{{article.replies}}</view>
+              </view>
+              <view class="article-post-time">{{article.create_time}}</view>              
             </view>
-            
-            <view class="article-author">
-              <view>{{article.author}} · {{article.create_time}}</view>
-              <view>阅读{{article.views}} 回复{{article.replies}}</view>
-            </view>
-
           </view>
-
+          </view>
         </block>
-
-      </view>
     </view>
   </view>
 </view>
