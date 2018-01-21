@@ -69,11 +69,18 @@ Page({
           if (resp_dict.data.forum_thread_data.length != 0) {
             that.setData({
               articleList: resp_dict.data.forum_thread_data,
-              page_index: page_index
+              page_index: page_index,
+              no_data: false,
+              have_data: false,
+              nomore_data: false,
             })
           } else {
             that.setData({
-              no_data: true
+              articleList: resp_dict.data.forum_thread_data,
+              page_index: page_index,
+              no_data: true,
+              nomore_data:false,
+              have_data:false,
             })
           }
         } else {
