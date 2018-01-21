@@ -10,6 +10,9 @@ Page({
     order_by_views: 0,
     has_top: 0,
     reload_index: 1,
+    no_data:false,
+    have_data: false,
+    nomore_data : false,
   },
 
   onLoad: function (options) {
@@ -28,7 +31,7 @@ Page({
       this.reloadIndex();
       this.get_forum_info();
       this.setData({
-        reload_index:0
+        reload_index: 0
       });
     }
   },
@@ -38,13 +41,13 @@ Page({
     var pid = e.currentTarget.dataset.pid;
     var tid = e.currentTarget.dataset.tid;
     wx.navigateTo({
-      url: '../detail/detail?pid='+pid+'&tid='+tid,
+      url: '../detail/detail?pid=' + pid + '&tid=' + tid,
     })
   },
 
-  reloadIndex: function() {
+  reloadIndex: function () {
     var that = this;
-    var tmpArticleList = [];  
+    var tmpArticleList = [];
     var page_size = that.data.page_size;
     var page_index = 0;
     wx.request({
@@ -63,10 +66,16 @@ Page({
         console.log(resp);
         var resp_dict = resp.data;
         if (resp_dict.err_code == 0) {
-          that.setData({
-            articleList: resp_dict.data.forum_thread_data,
-            page_index: page_index
-          })
+          if (resp_dict.data.forum_thread_data.length != 0) {
+            that.setData({
+              articleList: resp_dict.data.forum_thread_data,
+              page_index: page_index
+            })
+          } else {
+            that.setData({
+              no_data: true
+            })
+          }
         } else {
           getApp().showSvrErrModal(resp);
         }
@@ -74,10 +83,13 @@ Page({
     })
   },
 
-  onReachBottom: function() {
+  onReachBottom: function () {
     var that = this;
+    that.setData({
+      have_data: true,
+    })
     var page_size = that.data.page_size;
-    var page_index = that.data.page_index+1;
+    var page_index = that.data.page_index + 1;
     wx.request({
       url: getApp().globalData.svr_url + "get_thread.php",
       method: "post",
@@ -97,24 +109,31 @@ Page({
           var tmpArticleList = that.data.articleList;
           var respArticleList = resp_dict.data.forum_thread_data;
           var has_append = 0;
-          for (var i = 0; i < respArticleList.length; ++i) {
-            var has_in = 0;
-            for (var j = 0; j < tmpArticleList.length; ++j) {
-              if (respArticleList[i].tid == tmpArticleList[j].tid) {
-                has_in = 1;
-              } 
+          console.log(respArticleList)
+          if (respArticleList.length > 0) {
+            for (var i = 0; i < respArticleList.length; ++i) {
+              var has_in = 0;
+              for (var j = 0; j < tmpArticleList.length; ++j) {
+                if (respArticleList[i].tid == tmpArticleList[j].tid) {
+                  has_in = 1;
+                }
+              }
+              if (has_in == 0) {
+                tmpArticleList.push(respArticleList[i]);
+                has_append = 1;
+              }
             }
-            if (has_in == 0) {
-              tmpArticleList.push(respArticleList[i]);
-              has_append = 1;
+            console.log(tmpArticleList)
+            if (has_append == 1) {
+              that.setData({
+                articleList: tmpArticleList,
+                page_index: page_index
+              })
             }
-          }
-
-          if (has_append == 1)
-          {
+          } else {
             that.setData({
-              articleList: tmpArticleList,
-              page_index: page_index  
+              have_data: false,
+              nomore_data: true,
             })
           }
         }
@@ -122,13 +141,13 @@ Page({
     })
   },
 
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
     console.log('onPullDownRefresh');
     this.reloadIndex();
     wx.stopPullDownRefresh();
   },
 
-  get_forum_info: function() {
+  get_forum_info: function () {
     var that = this;
     wx.request({
       url: getApp().globalData.svr_url + "get_forum_info.php",
@@ -142,6 +161,8 @@ Page({
         console.log(resp);
         var resp_dict = resp.data;
         if (resp_dict.err_code == 0) {
+          console.log(resp_dict)
+          var data = {};
           that.setData({
             forum_data: resp_dict.data.forum_data,
             few_top_thread_data: resp_dict.data.few_top_thread_data,
@@ -154,14 +175,15 @@ Page({
     })
   },
 
-  show_more_top: function() {
+  show_more_top: function () {
+    console.log(this.data)
     this.setData({
       few_top_thread_data: this.data.top_thread_data,
       show_more: 0,
     });
   },
 
-  get_recent_thread: function() {
+  get_recent_thread: function () {
     this.setData({
       recent: 1,
       digest: 0,
@@ -170,7 +192,7 @@ Page({
     this.reloadIndex();
   },
 
-  get_hot_thread: function() {
+  get_hot_thread: function () {
     this.setData({
       recent: 0,
       digest: 0,
@@ -179,7 +201,7 @@ Page({
     this.reloadIndex();
   },
 
-  get_digest_thread: function() {
+  get_digest_thread: function () {
     this.setData({
       recent: 0,
       digest: 1,
@@ -188,9 +210,9 @@ Page({
     this.reloadIndex();
   },
 
-  toAddArticle: function(e) {
+  toAddArticle: function (e) {
     wx.navigateTo({
-      url: '../add_forum_article/add_forum_article?fid='+this.data.fid+"&fname="+this.data.forum_data.name,
+      url: '../add_forum_article/add_forum_article?fid=' + this.data.fid + "&fname=" + this.data.forum_data.name,
     })
   }
 })

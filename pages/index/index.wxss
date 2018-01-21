@@ -33,10 +33,10 @@
 .article-sub-header .article-title{
   font-size: 38rpx;
   /* font-weight: 600; */
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-  overflow: hidden;
+   display: -webkit-box; 
+   -webkit-box-orient: vertical; 
+   -webkit-line-clamp: 1; 
+   overflow: hidden; 
 }
 
 .article-info{

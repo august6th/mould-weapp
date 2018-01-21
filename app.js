@@ -4,13 +4,13 @@ App({
     var that = this;
     wx.getUserInfo({
       success: function (res) {
-        console.log(res.userInfo);
-        console.log('获取微信信息成功')
+        //console.log(res.userInfo) // 打印微信用户信息
         that.globalData.userInfo = res.userInfo;
       }
     });
-    that.get_token();
+    that.get_token(); // 获取token
   },
+
 
   get_token: function() {
     var that = this;
