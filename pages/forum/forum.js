@@ -6,7 +6,6 @@ Page({
    */
   data: {
     group_list: []
-  
   },
 
   onShow: function() {
@@ -22,6 +21,7 @@ Page({
         console.log(resp);
         var resp_dict = resp.data;
         if (resp_dict.err_code == 0) {
+          // console.log(resp_dict.data)
           that.setData({
             group_list: resp_dict.data
           })
@@ -42,7 +42,9 @@ Page({
   },
 
   clickGroup: function(e) {
-    var fid = e.currentTarget.dataset.fid;
+    console.log(e)
+    var fid = e.currentTarget.id;
+    console.log(fid)
     var group_list = this.data.group_list;
     for (var i = 0; i < group_list.length; i++) {
       if (group_list[i].fid == fid) {
@@ -53,8 +55,10 @@ Page({
         }
       }
     }
+    
     this.setData({
       group_list: group_list
     })
+    console.log(this.data.group_list)
   }
 })

@@ -112,6 +112,22 @@ Page({
             new_reader: 0,
           })  
           // 富文本
+          console.log(resp_dict.data.post_list)
+          // todo 将回复的楼层也进行 parse
+          /*
+          var post_list_length = resp_dict.data.post_list.length
+          for (var i = 0; i < post_list_length; i++) {
+            WxParse.wxParse('articleList_message_' + i, 'html', resp_dict.data.post_list[i].message, that, 5);
+          }
+          */
+          var post_list_length = resp_dict.data.post_list.length
+          for (let i = 0; i < post_list_length; i++) {
+            WxParse.wxParse('articleList_message_' + i, 'html', resp_dict.data.post_list[i].message, that, 5);
+            // if (i === post_list_length - 1) {
+            //   WxParse.wxParseTemArray('articleList.message', 'reply', post_list_length, that)
+            // }
+          }
+
           WxParse.wxParse('thread_data.message', 'html', resp_dict.data.thread_data.message, that, 5);
         } else {
           getApp().showSvrErrModal(resp);

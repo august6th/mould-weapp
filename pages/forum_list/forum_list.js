@@ -116,7 +116,7 @@ Page({
           var tmpArticleList = that.data.articleList;
           var respArticleList = resp_dict.data.forum_thread_data;
           var has_append = 0;
-          console.log(respArticleList)
+          // console.log(respArticleList)
           if (respArticleList.length > 0) {
             for (var i = 0; i < respArticleList.length; ++i) {
               var has_in = 0;
@@ -130,7 +130,6 @@ Page({
                 has_append = 1;
               }
             }
-            console.log(tmpArticleList)
             if (has_append == 1) {
               that.setData({
                 articleList: tmpArticleList,
@@ -168,7 +167,7 @@ Page({
         console.log(resp);
         var resp_dict = resp.data;
         if (resp_dict.err_code == 0) {
-          console.log(resp_dict)
+          // console.log(resp_dict)
           var data = {};
           that.setData({
             forum_data: resp_dict.data.forum_data,

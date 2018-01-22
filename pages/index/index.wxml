@@ -6,7 +6,7 @@
   
   <view class="page-body">
     <view class="page__bd">
-        <block wx:for="{{articleList}}" wx:for-item="article">
+        <block wx:for="{{articleList}}" wx:for-item="article" wx:key="">
           <view class="article" bindtap="toDetail" data-tid="{{article.tid}}">
             <view class="article-content">
               <view class="article-header">

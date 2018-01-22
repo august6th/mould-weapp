@@ -69,7 +69,7 @@
     
             <view class="article-content">
               <view>
-                {{article.message}}
+              {{article.message}}
               </view>
             </view>
           </view>
@@ -80,10 +80,8 @@
   </view>
   <view class="page-tail">
       <view class="resp-input-cell">
-        <input class="resp-input" type="text" placeholder="评论" bindinput="input_message" value="{{message}}"/>
+        <input class="resp-input" type="text" placeholder="说点什么吧..." bindinput="input_message" value="{{message}}"/>
       </view>
-      <view class="resp-btn" bindtap="submit_message">
-        回复
-      </view>
+      <view class="resp-btn" bindtap="submit_message">回复</view>
   </view>
 </view>

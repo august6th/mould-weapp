@@ -51,6 +51,7 @@ App({
     });
   },
 
+
   wxLogin: function() {
     var that = this;
     console.log('wxLogin');
@@ -85,7 +86,6 @@ App({
         }
       }
     });
-
   },
 
   showSvrErrModal: function(resp) {
@@ -117,7 +117,7 @@ App({
   },
 
   globalData: {
-    svr_url: 'http://lh2.mouldzj.com/wmapi/',
+    svr_url: 'http://localhost/wmapi/',
     userInfo: null,
   }
 })

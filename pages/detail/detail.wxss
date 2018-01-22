@@ -214,22 +214,29 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
 
 .resp-input-cell {
-  width: 80%;
+  width: 84%;
   margin-right: 20rpx;
 }
 
 .resp-input {
-  height: 70rpx;
+  height: 60rpx;
   padding-left: 20rpx;
-  width: 100%;
+  margin: 15rpx 0 15rpx 25rpx;
+  /* width: 100%; */
+  border:1px solid #ccc;
+  border-radius: 30rpx;
 }
 
 .resp-btn {
-  height: 70rpx;
-  width: 20%;
+  height: 60rpx;
+  width: 16%;
+  line-height: 60rpx;
   text-align: center;
-  line-height: 70rpx;
+  margin-right:8rpx;  
+  color: #4b0;
+  font-size: 30rpx;
 }
