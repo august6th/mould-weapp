@@ -10,7 +10,7 @@
     <view class="weui-cells-title">
       发布到版块：{{fname}}
     </view>
-    <view class="weui-cells add-forum-article">
+    <view class="weui-cells cells-no-border">
 
         <view class="weui-cell weui-cell_input">
           <view class="weui-cell__hd">

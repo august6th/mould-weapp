@@ -6,7 +6,7 @@
   </loading>
 <view class="page-body">
   <view class="page__bd">
-    <view class="weui-cells add-article">
+    <view class="weui-cells cells-no-border">
         <view class="weui-cell weui-cell_input">
           <view class="weui-cell__hd">
             <view class="weui-label">标题</view>

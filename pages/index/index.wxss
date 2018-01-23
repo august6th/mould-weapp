@@ -44,6 +44,7 @@
 }
 
 .article-sub-header .article-title{
+  color: #444;
   font-size: 30rpx;
    font-weight: 600; 
    display: -webkit-box; 

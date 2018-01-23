@@ -9,15 +9,6 @@
 	width: 150rpx;
 }
 
-.add-forum-article {
-  font-size: 30rpx;
-  border-radius: 10rpx;
-}
-
-.add-forum-article::after, .add-forum-article::before {
-  border:none;
-}
-
 .weui-cell::before {
 	content:" ";
 	position:absolute;

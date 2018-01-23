@@ -4,7 +4,7 @@
       <view class="page-head image-logo">
         <image src='../../resources/logo/mouldbbs300.png'></image>
       </view>
-  		<view class="weui-cells login-list">
+  		<view class="weui-cells cells-no-border">
   			<view class="weui-cell weui-cell_input">
 	          <view class="weui-cell__hd">
 	            <view class="weui-label">账号</view>

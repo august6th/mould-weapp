@@ -1,9 +1,4 @@
 /* add_article.wxss */
-.add-article {
-  font-size: 30rpx;
-  border-radius: 10rpx;
-  border:none;
-}
 
 .group_choose {
 	overflow: hidden; 
@@ -15,14 +10,7 @@
 	width: 150rpx;
 }
 
-.add-article::after {
-  border-bottom: none;
-}
-.add-article::before {
-  border-top: none;
-}
-
-.add-article .weui-cell::before {
+.weui-cell::before {
 	content:" ";
 	position:absolute;
 	left:0;
