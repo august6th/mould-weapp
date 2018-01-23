@@ -9,7 +9,7 @@
 }
 
 .post_message {
-  	font-size: 38rpx;
+  	font-size: 32rpx;
 }
 
 .post_thread {

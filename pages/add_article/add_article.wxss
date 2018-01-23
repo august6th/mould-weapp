@@ -1,4 +1,10 @@
 /* add_article.wxss */
+.add-article {
+  font-size: 30rpx;
+  border-radius: 10rpx;
+  border:none;
+}
+
 .group_choose {
 	overflow: hidden; 
 	white-space: nowrap; 
@@ -9,15 +15,22 @@
 	width: 150rpx;
 }
 
-.weui-cell::before {
+.add-article::after {
+  border-bottom: none;
+}
+.add-article::before {
+  border-top: none;
+}
+
+.add-article .weui-cell::before {
 	content:" ";
 	position:absolute;
 	left:0;
 	top:0;
 	right:0;
 	height:1px;
-	border-top:1rpx solid #d9d9d9;
-	color:#d9d9d9;
+	border-top:1rpx solid #efefef;
+	color:#efefef;
 }
 
 .del-img-btn {
@@ -25,7 +38,7 @@
 	position:absolute;
 	display: inline;
 	right: -10rpx;  
-  	top: -10rpx; 
+  top: -10rpx; 
 	width:40rpx;
 	height:40rpx;
 	border-radius: 20rpx;

@@ -5,16 +5,13 @@
         {{loading_msg}}
   </loading>
 
-  <view class="page-head">
-    <view class="page-head-info">
-        <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}"></image>
-        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </view>
+  <view class="page-head-info">
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}"></image>
+      <view class="userinfo-nickname">{{userInfo.nickName}}</view>
   </view>
 
   <view class="page-body">
-    <view class="weui-cells">
-
+    <view class="user-list">
       <block wx:if="{{hasUserInfo === false}}">
         <!--
         <view class="navigator" bindtap="wxlogin">
@@ -44,13 +41,6 @@
           <view class="navigator-arrow"></view>
         </navigator>
       </block>
-
-      <view style='display:none'>
-        <navigator url="pages/{{page.url}}" class="navigator">
-          <view class="navigator-text">关于我们</view>
-          <view class="navigator-arrow"></view>
-        </navigator>
-      </view>
     </view>
 
     <block wx:if="{{hasUserInfo === true}}">
@@ -58,6 +48,5 @@
         <button class="weui-btn" type="warn" bindtap="logout">退出登录</button>
       </view>
     </block>
-
   </view>
 </view>

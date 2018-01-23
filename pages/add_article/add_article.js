@@ -57,7 +57,6 @@ Page({
               } else {
                 getApp().showSvrErrModal(resp);
               }
-
               that.setData({
                 loading_hidden: true,
               })
@@ -182,7 +181,7 @@ Page({
       }
     })
   },
-
+  
   onShow: function() {
     var that = this;
     wx.request({

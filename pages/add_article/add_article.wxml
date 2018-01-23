@@ -4,11 +4,9 @@
   <loading hidden="{{loading_hidden}}">
     {{loading_msg}}
   </loading>
-
 <view class="page-body">
   <view class="page__bd">
-    <view class="weui-cells">
-
+    <view class="weui-cells add-article">
         <view class="weui-cell weui-cell_input">
           <view class="weui-cell__hd">
             <view class="weui-label">标题</view>
@@ -56,7 +54,7 @@
             </view>
             <view class="weui-uploader__bd">
               <view class="weui-uploader__files">
-                <block wx:for="{{imageList}}" wx:for-item="image">
+                <block wx:for="{{imageList}}" wx:for-item="image" wx:key="">
                   <view class="weui-uploader__file">
 
                     <view  class="image-cell">

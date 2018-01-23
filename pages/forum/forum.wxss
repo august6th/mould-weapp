@@ -45,6 +45,10 @@
   display: none;
 }
 
+.sub_group_title {
+  color:#FF6A6A;
+}
+
 .sub_group_note {
 	color:#999;
 	font-size:14px;
