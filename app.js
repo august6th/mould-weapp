@@ -1,23 +1,22 @@
 //app.js
 App({
   onLaunch: function() {
-    var that = this;
+    var that = this
     wx.getUserInfo({
       success: function (res) {
-        //console.log(res.userInfo) // 打印微信用户信息
+        // console.log(res.userInfo) // 打印微信用户信息
         that.globalData.userInfo = res.userInfo;
       }
-    });
-    that.get_token(); // 获取token
+    })
+    that.get_token() // 获取token
   },
-
 
   get_token: function() {
     var that = this;
     wx.login({
       success: function (res) {
         if (res.code) {
-          console.log(res);
+          // console.log(res);
           wx.request({
             url: getApp().globalData.svr_url+'get_token.php',
             method: 'POST',
@@ -51,10 +50,9 @@ App({
     });
   },
 
-
   wxLogin: function() {
     var that = this;
-    console.log('wxLogin');
+    console.log('微信登陆..');
     wx.getUserInfo({
       success: function (res) {
         console.log(res.userInfo);
@@ -90,6 +88,7 @@ App({
 
   showSvrErrModal: function(resp) {
     if (resp.data.err_code != 0 && resp.data.err_msg) {
+      console.log(resp.data.err_msg)
       this.showErrModal(resp.data.err_msg);
     } else {
       console.log(resp);
@@ -117,7 +116,9 @@ App({
   },
 
   globalData: {
-    svr_url: 'http://localhost/wmapi/',
+    svr_url: 'http://lh2.mouldzj.com/wmapi/',
+    // svr_url: 'http://localhost/wmapi/',
     userInfo: null,
+    lite_switch: true,
   }
 })

@@ -41,6 +41,7 @@ Page({
             success: function(resp) {
               console.log(resp);
               var resp_dict = JSON.parse(resp.data)
+              console.log(resp_dict)
               if (resp_dict.err_code == 0)
               {
                 console.log(resp_dict.data.file_url)
@@ -53,7 +54,6 @@ Page({
               } else {
                 getApp().showSvrErrModal(resp);
               }
-
               that.setData({
                 loading_hidden: true,
               })

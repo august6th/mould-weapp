@@ -16,12 +16,12 @@
     <view class="weui-cells">
 
       <block wx:if="{{hasUserInfo === false}}">
-        
+        <!--
         <view class="navigator" bindtap="wxlogin">
           <view class="navigator-text">微信登录</view>
           <view class="navigator-arrow"></view>
         </view>
-        
+        -->
         <navigator url="../login/login" class="navigator">
           <view class="navigator-text">账号登录</view>
           <view class="navigator-arrow"></view>

@@ -1,4 +1,4 @@
-// pages/forum_list/forum_list.js
+var app = getApp()
 Page({
   data: {
     fid: 0,
@@ -13,6 +13,7 @@ Page({
     no_data:false,
     have_data: false,
     nomore_data : false,
+    lite_switch: app.globalData.lite_switch,
   },
 
   onLoad: function (options) {

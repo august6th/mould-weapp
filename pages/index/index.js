@@ -8,6 +8,7 @@ Page({
     page_index: 0,
     loading_hidden: true,
     loading_msg: '加载中...',
+    lite_switch: app.globalData.lite_switch,
   },
 
   onLoad: function () {

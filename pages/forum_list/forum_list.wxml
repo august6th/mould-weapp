@@ -11,7 +11,7 @@
         </view>
         <view wx:if="{{has_top}}" class="top_subject">
           <view class="zan-tag zan-tag--primary">置顶贴</view>
-          <block wx:for="{{few_top_thread_data}}" wx:for-item="item">
+          <block wx:for="{{few_top_thread_data}}" wx:for-item="item" wx:key="">
             <view class="zan-ellipsis" bindtap="toDetail" data-tid="{{item.tid}}">{{item.subject}}</view>
          </block>
          <block wx:if="{{show_more}}">
@@ -26,7 +26,7 @@
           <view class="thread_order_item {{ order_by_views == 1 ? 'thread_order_border' : '' }}" bindtap="get_hot_thread">热门</view>
           <view class="thread_order_item {{ digest == 1 ? 'thread_order_border' : '' }}" bindtap="get_digest_thread">精华</view>
         </view>
-        <block wx:for="{{articleList}}" wx:for-item="article">
+        <block wx:for="{{articleList}}" wx:for-item="article" wx:key="">
           <view class="article" bindtap="toDetail" data-tid="{{article.tid}}">
             <view class="article-content">
               <view class="article-header">
@@ -45,17 +45,20 @@
                   </view>
                 </view>
               </view>
-              <block wx:if="{{article.image_list.length > 0}}">
-                <view  class="article-img">
-                  <view class="article-img-info">
-                    <image class="article-img-item" src='{{article.image_list[0]}}'></image>
+              <!-- 注释掉图片和主体内容 -->
+              <block wx:if="{{!lite_switch}}">
+                <block wx:if="{{article.image_list.length > 0}}">
+                  <view  class="article-img">
+                    <view class="article-img-info">
+                      <image class="article-img-item" src='{{article.image_list[0]}}'></image>
+                    </view>
                   </view>
+                </block>
+                <block wx:if="{{article.message}}">
+                <view class="article-message">
+                  {{article.message}}
                 </view>
-              </block>
-              <block wx:if="{{article.message}}">
-              <view class="article-message">
-                {{article.message}}
-              </view>
+                </block>
               </block>
             <view class="article-ext-info">
               <view class="article-re">
