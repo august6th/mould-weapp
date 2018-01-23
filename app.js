@@ -108,6 +108,34 @@ App({
     }
   },
 
+  checkLogin: function() {
+    var that = this
+    wx.getStorage({
+      key: 'login',
+      success: function (res) {
+        // console.log(res.data)
+        if (!res.data) {
+          that.unLoginModal()
+        }
+      },
+      fail: function () {
+        that.unLoginModal()
+      }
+    })
+  },
+
+  unLoginModal:function (){
+    wx.showModal({
+      content: '您还没有登录，请先登录！',
+      showCancel: false,
+      success: function () {
+        wx.navigateTo({
+          url: '/pages/login/login',
+        })
+      }
+    })
+  },
+
   showErrModal: function(err_msg) {
     wx.showModal({
       content: err_msg,
@@ -117,7 +145,8 @@ App({
 
   globalData: {
     // svr_url: 'http://lh2.mouldzj.com/wmapi/',
-    svr_url: 'http://localhost/wmapi/',
+    // svr_url: 'http://localhost/wmapi/',
+    svr_url: 'https://yes.mouldzj.com/wmapi/',    
     userInfo: null,
     lite_switch: true,
   }

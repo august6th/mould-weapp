@@ -14,6 +14,7 @@ Page({
     new_reader: 0,
     loading_hidden: true,
     loading_msg: '加载中...',
+    login_flag: false,
   },
 
   previewImage: function (e) {
@@ -29,6 +30,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
+    wx.getStorage({
+      key: 'login',
+      success: function (res) {
+        console.log(res.data)
+        if (res.data) {
+          that.setData({
+            login_flag: true
+          })
+        }
+      }
+    })
+
     console.log(options);
     var tid = options.tid;
     this.setData({
@@ -36,7 +50,6 @@ Page({
       new_reader: 1,
     })
 
-    var that = this;
     var token = wx.getStorageSync("token");
     if (token == null || token == undefined || token == '') {
       wx.login({

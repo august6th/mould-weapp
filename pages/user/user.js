@@ -118,6 +118,10 @@ Page({
               that.onShow();
             }
           })
+          wx.setStorage({
+            key: 'login',
+            data: 0,
+          })
         } else {
           getApp().showSvrErrModal(resp);
         }

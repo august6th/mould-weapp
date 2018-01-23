@@ -240,3 +240,13 @@
   color: #4b0;
   font-size: 30rpx;
 }
+
+.need-login {
+  height: 100rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color:#999;
+}

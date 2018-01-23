@@ -79,9 +79,14 @@
     </view>
   </view>
   <view class="page-tail">
+      <block wx:if="{{login_flag}}">
       <view class="resp-input-cell">
         <input class="resp-input" type="text" placeholder="说点什么吧..." bindinput="input_message" value="{{message}}"/>
       </view>
       <view class="resp-btn" bindtap="submit_message">回复</view>
+      </block>
+      <block wx:else>
+        <navigator class="need-login" url="/pages/login/login">点此处登录之后，即可回复本帖</navigator>
+      </block>
   </view>
 </view>

@@ -56,7 +56,10 @@ Page({
             key: 'token',
             data: resp_dict.data.token,
           });
-
+          wx.setStorage({
+            key: 'login',
+            data: 1,
+          })
           wx.switchTab({
             url:"../user/user"
           });  

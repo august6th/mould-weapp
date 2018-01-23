@@ -1,4 +1,5 @@
 // add_article.js
+var app = getApp()
 Page({
 
   /**
@@ -153,6 +154,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    app.checkLogin()
     console.log(options);
     var fid = options.fid;
     var fname = options.fname;

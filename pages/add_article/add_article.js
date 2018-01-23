@@ -1,4 +1,5 @@
 // add_article.js
+var app = getApp()
 Page({
 
   /**
@@ -20,6 +21,7 @@ Page({
 
   chooseImage: function () {
     var that = this
+    console.log(that.data)
     wx.chooseImage({
       count: 1,
       success: function (res) {
@@ -35,7 +37,7 @@ Page({
         for (var i = 0; i < res.tempFilePaths.length; i++) {
           var localFilePath = res.tempFilePaths[i]
           wx.uploadFile({
-            url: getApp().globalData.svr_url + 'add_image.php',
+            url: app.globalData.svr_url + 'add_image.php',
             filePath: localFilePath,
             name: 'myfile',
             method: 'POST',
@@ -50,6 +52,7 @@ Page({
                 console.log(resp_dict.data.file_url)
                 tmpImageList.push(resp_dict.data.file_url);
                 tmpAidList.push(resp_dict.data.aid);
+                // console.log(that.data)
                 that.setData({
                   imageList: tmpImageList,
                   aidList: tmpAidList
@@ -94,6 +97,7 @@ Page({
       sub_group_list: sub_group_list,
       sub_group_index: 0,
     });
+    console.log(this.data)
   },
 
   subGroupChange: function(e) {
@@ -105,8 +109,8 @@ Page({
       sub_group_index: sub_group_index,
       fid: fid,
     });
-    console.log(fid);
-
+    // console.log(fid);
+    console.log(this.data)
   },
   
   inputContent: function(e) {
@@ -182,6 +186,10 @@ Page({
     })
   },
   
+  onLoad: function() {
+    app.checkLogin()
+  }, 
+
   onShow: function() {
     var that = this;
     wx.request({
