@@ -1,4 +1,5 @@
 // pages/self_thread/self_thread.js
+var app = getApp()
 Page({
 
   /**
@@ -7,7 +8,8 @@ Page({
   data: {
     articleList: [],
     page_size: 5,
-    page_index: 0
+    page_index: 0,
+    lite_switch: app.globalData.lite_switch
   },
 
   /**

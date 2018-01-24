@@ -149,6 +149,6 @@ App({
     // svr_url: 'http://localhost/wmapi/',
     svr_url: 'https://yes.mouldzj.com/wmapi/',
     userInfo: null,
-    lite_switch: false,
+    lite_switch: true,
   }
 })

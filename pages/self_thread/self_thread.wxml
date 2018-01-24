@@ -20,17 +20,19 @@
                   </view>
                 </view>
               </view>
-              <block wx:if="{{article.image_list.length > 0}}">
+              <block wx:if="{{!lite_switch}}">
+                <block wx:if="{{article.image_list.length > 0}}">
                  <view  class="article-img">
-                  <view class="article-img-info">
-                    <image class="article-img-item" src='{{article.image_list[0]}}'></image>
+                    <view class="article-img-info">
+                      <image class="article-img-item" src='{{article.image_list[0]}}'></image>
+                    </view>
+                  </view> 
+                </block>
+                <block wx:if="{{article.message}}">
+                  <view class="article-message">
+                    {{article.message}}
                   </view>
-                </view> 
-              </block>
-              <block wx:if="{{article.message}}">
-              <view class="article-message">
-                {{article.message}}
-              </view>
+                </block>
               </block>
             <view class="article-ext-info">
               <view class="article-re">
