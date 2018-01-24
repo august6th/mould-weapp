@@ -69,25 +69,18 @@
                 <view>{{article.position}}楼</view>
               </view>
             </view>
-    
-            <view class="article-content">
-              <view>
-                <block wx:for="{{replyTemArray}}" wx:key="">
-                  <block wx:if="{{index == articleIndex}}">
-                    <template is="wxParse" data="{{wxParseData:item}}"/>
-                    <block wx:if="{{article.post_image_list}}">
-                     <!-- {{article.post_image_list}}  -->
+              <block wx:for="{{replyTemArray}}" wx:key="">
+                <block wx:if="{{index == articleIndex}}">
+                  <template is="wxParse" data="{{wxParseData:item}}"/>
+                  <block wx:if="{{article.post_image_list}}">
                     <block wx:for="{{article.post_image_list}}" wx:for-index="idx" wx:key="">
                       <view>
                         <image class="thread_image" mode="widthFix" src="{{article.post_image_list[idx]}}" data-src="{{article.post_image_list[idx]}}" data-image_list="{{article.post_image_list}}" bindtap="previewImage"></image>
                       </view>
                     </block>
                   </block>
-                  </block>
-
                 </block>
-              </view>
-            </view>
+              </block>
           </view>
         </block>
         <view class="page-tail-space"></view>

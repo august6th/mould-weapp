@@ -1,4 +1,5 @@
 // pages/self_post/self_post.js
+var WxParse = require('../../wxParse/wxParse.js');
 Page({
 
   /**
@@ -35,6 +36,25 @@ Page({
             postList: resp_dict.data.self_post_list,
             page_index: page_index
           })
+          console.log(resp_dict.data.self_post_list)
+
+          // 我的帖子 parse
+          var postArr = []
+
+          for (var i = 0; i < resp_dict.data.self_post_list.length; i++) {
+            // console.log(post_list[i].message)
+            postArr.push(resp_dict.data.self_post_list[i].message)
+          }
+
+          // console.log(postArr);
+
+          for (let j = 0; j < postArr.length; j++) {
+            WxParse.wxParse('reply' + j, 'html', postArr[j], that);
+            if (j === postArr.length - 1) {
+              WxParse.wxParseTemArray("replyTemArray", 'reply', postArr.length, that)
+            }
+          }
+
         } else {
           getApp().showSvrErrModal(resp);
         }
@@ -81,6 +101,22 @@ Page({
               postList: tmpPostList,
               page_index: page_index  
             })
+            // 我的帖子 parse
+            var postArr = []
+
+            for (var i = 0; i < tmpPostList.length; i++) {
+              // console.log(post_list[i].message)
+              postArr.push(tmpPostList[i].message)
+            }
+
+            // console.log(postArr);
+
+            for (let j = 0; j < postArr.length; j++) {
+              WxParse.wxParse('reply' + j, 'html', postArr[j], that);
+              if (j === postArr.length - 1) {
+                WxParse.wxParseTemArray("replyTemArray", 'reply', postArr.length, that)
+              }
+            }
           }
         } else {
           getApp().showSvrErrModal(resp);
