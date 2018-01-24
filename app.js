@@ -145,9 +145,15 @@ App({
   },
 
   globalData: {
+    // base_url: 'http://lh2.mouldzj.com/',
     // svr_url: 'http://lh2.mouldzj.com/wmapi/',
+
+    // base_url: 'http://localhost/',
     // svr_url: 'http://localhost/wmapi/',
+
+    base_url: 'https://yes.mouldzj.com/',
     svr_url: 'https://yes.mouldzj.com/wmapi/',
+    
     userInfo: null,
     lite_switch: true,
   }
