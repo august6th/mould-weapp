@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
 var app = getApp()
+var WxParse = require('../../wxParse/wxParse.js');
 Page({
   data: {
     articleList: [],
@@ -12,7 +13,7 @@ Page({
   },
 
   onLoad: function () {
-    var that = this;
+    var that = this;    
     var token = wx.getStorageSync("token");
     if (token == null || token == undefined || token == '') {
       wx.login({
@@ -23,7 +24,6 @@ Page({
               loading_hidden: false,
               loading_msg: '加载中...'
             })
-
             wx.request({
               url: getApp().globalData.svr_url+'get_token.php',
               method: 'POST',

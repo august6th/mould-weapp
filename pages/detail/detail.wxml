@@ -1,8 +1,11 @@
 <!--detail.wxml-->
+<import src="/wxParse/wxParse.wxml"/>
 <view class="container">
   <loading hidden="{{loading_hidden}}">
     {{loading_msg}}
   </loading>
+
+
   <view class="page-body">
     <view class="page__bd">
       <view class="thread_title-cell">
@@ -34,7 +37,7 @@
           </view>
         </view>
 
-        <import src="/wxParse/wxParse.wxml"/>
+        
         <template is="wxParse" data="{{wxParseData:thread_data.message.nodes}}"/>
         <!-- <text>
           {{thread_data.message}}
@@ -50,7 +53,7 @@
 
       <view>
         <view class="resp-head">全部回复（{{thread_data.replies}}）</view>
-        <block wx:for="{{articleList}}" wx:for-item="article" wx:key="articleId">
+        <block wx:for="{{articleList}}" wx:for-index="articleIndex" wx:for-item="article" wx:key="articleId">
           <view class="article">
             <view class="article-info">
               <view class="article-author">
@@ -69,7 +72,20 @@
     
             <view class="article-content">
               <view>
-              {{article.message}}
+                <block wx:for="{{replyTemArray}}" wx:key="">
+                  <block wx:if="{{index == articleIndex}}">
+                    <template is="wxParse" data="{{wxParseData:item}}"/>
+                    <block wx:if="{{article.post_image_list}}">
+                     <!-- {{article.post_image_list}}  -->
+                    <block wx:for="{{article.post_image_list}}" wx:for-index="idx" wx:key="">
+                      <view>
+                        <image class="thread_image" mode="widthFix" src="{{article.post_image_list[idx]}}" data-src="{{article.post_image_list[idx]}}" data-image_list="{{article.post_image_list}}" bindtap="previewImage"></image>
+                      </view>
+                    </block>
+                  </block>
+                  </block>
+
+                </block>
               </view>
             </view>
           </view>
@@ -78,6 +94,7 @@
       </view>
     </view>
   </view>
+
   <view class="page-tail">
       <block wx:if="{{login_flag}}">
       <view class="resp-input-cell">

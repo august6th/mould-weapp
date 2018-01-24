@@ -125,22 +125,27 @@ Page({
             new_reader: 0,
           })  
           // 富文本
+          var post_list = resp_dict.data.post_list
           console.log(resp_dict.data.post_list)
           // todo 将回复的楼层也进行 parse
-          /*
-          var post_list_length = resp_dict.data.post_list.length
-          for (var i = 0; i < post_list_length; i++) {
-            WxParse.wxParse('articleList_message_' + i, 'html', resp_dict.data.post_list[i].message, that, 5);
-          }
-          */
-          var post_list_length = resp_dict.data.post_list.length
-          for (let i = 0; i < post_list_length; i++) {
-            WxParse.wxParse('articleList_message_' + i, 'html', resp_dict.data.post_list[i].message, that, 5);
-            // if (i === post_list_length - 1) {
-            //   WxParse.wxParseTemArray('articleList.message', 'reply', post_list_length, that)
-            // }
+
+          var postArr = []
+
+          for (var i = 0; i < post_list.length; i++){
+            // console.log(post_list[i].message)
+            postArr.push(post_list[i].message)
           }
 
+          // console.log(postArr);
+
+          for (let j = 0; j < postArr.length; j++) {
+            WxParse.wxParse('reply' + j, 'html', postArr[j], that);
+            if (j === postArr.length - 1) {
+              WxParse.wxParseTemArray("replyTemArray", 'reply', postArr.length, that)
+            }
+          }
+
+          // console.log(resp_dict.data.thread_data.message)
           WxParse.wxParse('thread_data.message', 'html', resp_dict.data.thread_data.message, that, 5);
         } else {
           getApp().showSvrErrModal(resp);
@@ -241,6 +246,25 @@ Page({
               articleList: tmpArticleList,
               page_index: page_index  
             })
+
+            // 回复消息也经过 wxParse
+
+            var postArr = []
+
+            for (var i = 0; i < tmpArticleList.length; i++) {
+              // console.log(tmpArticleList[i].message)
+              postArr.push(tmpArticleList[i].message)
+            }
+
+            // console.log(postArr);
+
+            for (let j = 0; j < postArr.length; j++) {
+              WxParse.wxParse('reply' + j, 'html', postArr[j], that);
+              if (j === postArr.length - 1) {
+                WxParse.wxParseTemArray("replyTemArray", 'reply', postArr.length, that)
+              }
+            }
+
           }
         } else {
           getApp().showSvrErrModal(resp);

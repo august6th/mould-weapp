@@ -33,12 +33,12 @@ function wxParse(bindName = 'wxParseData', type='html', data='<div class="color:
   var transData = {};//存放转化后的数据
   if (type == 'html') {
     transData = HtmlToJson.html2json(data, bindName);
-    console.log(JSON.stringify(transData, ' ', ' '));
+    // console.log(JSON.stringify(transData, ' ', ' '));
   } else if (type == 'md' || type == 'markdown') {
     var converter = new showdown.Converter();
     var html = converter.makeHtml(data);
     transData = HtmlToJson.html2json(html, bindName);
-    console.log(JSON.stringify(transData, ' ', ' '));
+    // console.log(JSON.stringify(transData, ' ', ' '));
   }
   transData.view = {};
   transData.view.imagePadding = 0;
@@ -134,7 +134,6 @@ function wxParseTemArray(temArrayName,bindNameReg,total,that){
     var simArr = temData[bindNameReg+i].nodes;
     array.push(simArr);
   }
-
   temArrayName = temArrayName || 'wxParseTemArray';
   obj = JSON.parse('{"'+ temArrayName +'":""}');
   obj[temArrayName] = array;

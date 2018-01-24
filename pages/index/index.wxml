@@ -3,7 +3,6 @@
   <loading hidden="{{loading_hidden}}">
     {{loading_msg}}
   </loading>
-  
   <view class="page-body">
     <view class="page__bd">
         <block wx:for="{{articleList}}" wx:for-item="article" wx:key="">
