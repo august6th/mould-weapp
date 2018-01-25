@@ -3,7 +3,7 @@
 
 .thread_title-cell {
   border-radius: 10rpx;
-  margin: 20rpx 0;
+  margin: 0 0 20rpx 0;
   padding: 20rpx 30rpx;
   background-color: white;
   display: felx;
@@ -52,6 +52,18 @@
   padding: 20rpx 30rpx;
   background-color: white;
   border-radius: 5rpx;
+}
+
+.new-post{
+  border:2px solid #4b0;
+}
+
+.new-post .article-info .article-author-info {
+  padding:0;
+}
+
+.new-post .article-info .article-author-position{
+  color:#4b0;
 }
 
  .article-info {

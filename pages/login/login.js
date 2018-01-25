@@ -59,6 +59,10 @@ Page({
           wx.setStorage({
             key: 'login',
             data: 1,
+          });
+          wx.setStorage({
+            key: 'username',
+            data: that.data.username,
           })
           wx.switchTab({
             url:"../user/user"

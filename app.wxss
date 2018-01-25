@@ -99,6 +99,10 @@ form{
   margin-bottom: 100rpx;
 }
 
+.page__bd{
+  margin-top:20rpx;
+}
+
 .page-foot{
   margin: 100rpx 0 30rpx 0;
   text-align: center;

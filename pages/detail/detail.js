@@ -8,6 +8,10 @@ Page({
    */
   data: {
     imageList: [],
+    newpost:  false,
+    username: '',
+    post_message: '',
+    time: '',
     tid: 0,
     page_index: 0,
     page_size: 5,
@@ -125,6 +129,7 @@ Page({
             new_reader: 0,
           })  
           // 富文本
+          
           var post_list = resp_dict.data.post_list
           console.log(resp_dict.data.post_list)
           // todo 将回复的楼层也进行 parse
@@ -144,9 +149,8 @@ Page({
               WxParse.wxParseTemArray("replyTemArray", 'reply', postArr.length, that)
             }
           }
-
           // console.log(resp_dict.data.thread_data.message)
-          WxParse.wxParse('thread_data.message', 'html', resp_dict.data.thread_data.message, that, 5);
+          WxParse.wxParse('thread_data.message', 'html', resp_dict.data.thread_data.message, that, 5);  
         } else {
           getApp().showSvrErrModal(resp);
         }
@@ -179,7 +183,6 @@ Page({
         message: that.data.message,
       },
       success: function(resp) {
-        console.log(resp);
         var resp_dict = resp.data;
         if (resp_dict.err_code == 10001) {
           wx.showModal({
@@ -195,15 +198,60 @@ Page({
             }
           });
         } else if (resp_dict.err_code == 0) {
-          that.setData({
-            message: ''
-          });
-          that.reloadIndex();
+          // console.log(resp);
+          wx.showToast({
+            title: '发表成功',
+            icon: 'success',
+          })
+          // that.reloadIndex();
+          that.addPost(that.data.message);
         } else {
           getApp().showSvrErrModal(resp);
         }
       }
     })
+  },
+  addPost: function (message){
+    var that = this
+    var time = that.getNowFormatDate()
+    wx.getStorage({
+      key: 'username',
+      success: function(res) {
+        // console.log(time)
+        // console.log(res.data)
+        // console.log(message)
+        that.setData({
+          newpost: true,
+          username: res.data,
+          time: time,
+          message: '',
+          post_message: message
+        })
+        wx.pageScrollTo({
+          scrollTop: 0,
+          duration: 300
+        })
+      },
+      fail: function() {
+        that.reloadIndex();
+      }
+    })
+  },
+
+  getNowFormatDate:function () {
+    var date = new Date();
+    var seperator1 = "-";
+    var seperator2 = ":";
+    var month = date.getMonth() + 1;
+    var strDate = date.getDate();
+    if (month >= 1 && month <= 9) {
+      month = "0" + month;
+    }
+    if (strDate >= 0 && strDate <= 9) {
+      strDate = "0" + strDate;
+    }
+    var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate;
+    return currentdate;
   },
 
   onReachBottom: function() {

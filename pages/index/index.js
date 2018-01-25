@@ -13,7 +13,8 @@ Page({
   },
 
   onLoad: function () {
-    var that = this;    
+    var that = this;
+    console.log(app.globalData.userInfo)
     var token = wx.getStorageSync("token");
     if (token == null || token == undefined || token == '') {
       wx.login({
@@ -46,7 +47,6 @@ Page({
                 } else {
                   getApp().showSvrErrModal(resp);
                 }
-
                 that.setData({
                   loading_hidden: true,
                   loading_msg: '加载中...'

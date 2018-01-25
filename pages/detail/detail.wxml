@@ -4,10 +4,26 @@
   <loading hidden="{{loading_hidden}}">
     {{loading_msg}}
   </loading>
-
-
   <view class="page-body">
     <view class="page__bd">
+      <view>
+          <block wx:if="{{newpost}}">
+          <view class="article new-post">
+            <view class="article-info">
+              <view class="article-author">
+                <view class="article-author-info">
+                  <view>{{username}}</view>
+                  <view>{{time}}</view>
+                </view>
+              </view>
+              <view class="article-author-position">
+                <view>发表成功</view>
+              </view>
+            </view>
+            <view>{{post_message}}</view>
+          </view>
+        </block>
+      </view>
       <view class="thread_title-cell">
         <view class="thread_data-title">{{thread_data.subject}}</view>
         <view class="thread_data-sub">
