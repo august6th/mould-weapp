@@ -8,7 +8,9 @@
     "pages/register/register",
     "pages/forum_list/forum_list",
     "pages/self_post/self_post",
-    "pages/self_thread/self_thread"
+    "pages/self_thread/self_thread",
+    "pages/add_forum_article/add_forum_article",
+    "pages/add_article/add_article"
   ],
   "window": {
     "backgroundTextStyle": "#323840",
@@ -33,6 +35,12 @@
         "text": "版块",
         "iconPath": "resources/image/kind_gray.png",
         "selectedIconPath": "resources/image/kind.png"
+      },
+      {
+        "pagePath": "pages/add_article/add_article",
+        "text": "新建",
+        "iconPath": "resources/image/add_gray.png",
+        "selectedIconPath": "resources/image/add.png"
       },
       {
         "pagePath": "pages/user/user",
