@@ -31,8 +31,8 @@
   width: 90rpx;
   height:90rpx;
   */
-  width: 72rpx;
-  height: 72rpx;
+  width: 78rpx;
+  height: 78rpx;
   border-radius: 50%;
    margin-right: 20rpx; 
 }
@@ -50,7 +50,8 @@
    display: -webkit-box; 
    -webkit-box-orient: vertical; 
    -webkit-line-clamp: 1; 
-   overflow: hidden; 
+   overflow: hidden;
+   margin-bottom: 2rpx;
 }
 
 .article-info{
@@ -59,8 +60,13 @@
   align-items: center;
 }
 
+.article-info .article-by{
+  color:#c7c7c7;
+  margin-right:10rpx;
+}
+
 .article-info .article-author{
-  color:#2D2E2F;
+  color:#666;
   font-size:26rpx;
 }
 

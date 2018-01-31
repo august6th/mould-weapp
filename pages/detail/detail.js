@@ -180,7 +180,7 @@ Page({
       data: {
         token: wx.getStorageSync("token"),
         tid: that.data.tid,
-        message: that.data.message,
+        message: encodeURI(that.data.message),
       },
       success: function(resp) {
         var resp_dict = resp.data;

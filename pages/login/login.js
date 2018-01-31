@@ -42,7 +42,7 @@ Page({
       header: { "content-type": "application/x-www-form-urlencoded" },
       data: {
         token: wx.getStorageSync("token"),
-        username: that.data.username,
+        username: encodeURI(that.data.username),
         password: that.data.password
       },
       success: function (resp) {

@@ -9,18 +9,20 @@ Page({
     page_index: 0,
     loading_hidden: true,
     loading_msg: '加载中...',
+    no_data: false,
+    have_data: true,
+    nomore_data: false,
     lite_switch: app.globalData.lite_switch,
   },
 
   onLoad: function () {
     var that = this;
-    console.log(app.globalData.userInfo)
     var token = wx.getStorageSync("token");
     if (token == null || token == undefined || token == '') {
       wx.login({
         success: function (res) {
           if (res.code) {
-            console.log(res);
+            //console.log(res);
             that.setData({
               loading_hidden: false,
               loading_msg: '加载中...'
@@ -85,6 +87,7 @@ Page({
         page_index: page_index
       },
       success: function (resp) {
+        console.log('Load more threads...');
         console.log(resp);
         var resp_dict = resp.data;
         if (resp_dict.err_code == 0) {
@@ -104,11 +107,17 @@ Page({
             }
           }
 
-          if (has_append == 1)
-          {
+          if (has_append == 1) {
             that.setData({
               articleList: tmpArticleList,
-              page_index: page_index  
+              page_index: page_index,
+              have_data: true,
+              nomore_data: false,
+            })
+          } else {
+            that.setData({
+              have_data: false,
+              nomore_data: true,
             })
           }
         } else {
@@ -133,6 +142,7 @@ Page({
         page_index: page_index
       },
       success: function (resp) {
+        console.log('Load threads...');
         console.log(resp);
         var resp_dict = resp.data;
         if (resp_dict.err_code == 0) {

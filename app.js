@@ -1,11 +1,9 @@
 //app.js
-
 App({
   onLaunch: function() {
     var that = this
     wx.getUserInfo({
       success: function (res) {
-        // console.log(res.userInfo) // 打印微信用户信息
         that.globalData.userInfo = res.userInfo;
       }
     })
@@ -27,6 +25,7 @@ App({
               code: res.code,
             },
             success: function(resp) {
+              console.log('Get token...');
               console.log(resp);
               var resp_dict = resp.data;
               if (resp_dict.err_code == 0) {
@@ -34,9 +33,12 @@ App({
                   key: 'token',
                   data: resp_dict.data.token,
                   success: function() {
+                    console.log('Close wechat login...');
+                    /*
                     if (resp_dict.data.has_login != 1) {
                         that.wxLogin();
                     }
+                    */
                   }
                 })
               } else {
@@ -45,7 +47,7 @@ App({
             }
           })
         } else {
-          console.log('获取用户登录态失败！' + res.errMsg)
+          console.log('获取用户登录状态失败！' + res.errMsg)
         }
       }
     });
@@ -53,10 +55,8 @@ App({
 
   wxLogin: function() {
     var that = this;
-    console.log('微信登陆..');
     wx.getUserInfo({
       success: function (res) {
-        console.log(res.userInfo);
         var username = res.userInfo.nickName;
         var avatar_url = res.userInfo.avatarUrl;
         if (username && avatar_url){
@@ -70,7 +70,6 @@ App({
               avatar_url: avatar_url
             },
             success: function(resp) {
-              console.log(resp);
               var resp_dict = resp.data;
               if (resp_dict.err_code == 0) {
                 wx.setStorage({
@@ -114,7 +113,6 @@ App({
     wx.getStorage({
       key: 'login',
       success: function (res) {
-        // console.log(res.data)
         if (!res.data) {
           that.unLoginModal()
         }
@@ -145,16 +143,12 @@ App({
   },
 
   globalData: {
-    // base_url: 'http://lh2.mouldzj.com/',
-    // svr_url: 'http://lh2.mouldzj.com/wmapi/',
-
-    // base_url: 'http://localhost/',
-    // svr_url: 'http://localhost/wmapi/',
-
-    base_url: 'https://yes.mouldzj.com/',
-    svr_url: 'https://yes.mouldzj.com/wmapi/',
+    base_url: 'http://lh2.mouldzj.com',
+    svr_url: 'http://lh2.mouldzj.com/wmapi/',    
+    // base_url: 'https://www.mouldbbs.com/',
+    // svr_url: 'https://www.mouldbbs.com/wmapi/',
     
     userInfo: null,
-    lite_switch: true,
+    lite_switch: false,
   }
 })

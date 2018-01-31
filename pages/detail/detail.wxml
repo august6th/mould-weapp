@@ -33,7 +33,12 @@
               <view class="zan-icon zan-icon-chat"></view>
               <view>{{thread_data.replies}}</view>
           </view>
-          <view class="thread_data-fid">{{thread_data.fid_name}}</view>
+          <block wx:if="{{thread_data.fid_name}}">
+            <view class="thread_data-fid">{{thread_data.fid_name}}</view>
+          </block>
+          <block wx:else>
+            <view class="thread_data-fid">群组</view>
+          </block>
         </view>
       </view>
 

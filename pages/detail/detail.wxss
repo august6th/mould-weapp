@@ -44,7 +44,7 @@
   border-radius: 5rpx;
   border: 0.1rpx solid #FF6A6A;
   color: #FF6A6A;
-  padding: 0 20rpx;
+  padding: 2px 6rpx;
   margin-top:5rpx;
 }
 
