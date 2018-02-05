@@ -89,6 +89,7 @@
     background-size: cover;
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
+    margin-bottom:10rpx;
 }
 
 .article-img-info{
@@ -112,7 +113,7 @@
 }
 
 .article-message{
-  padding:16rpx 0;
+  margin:10rpx 0;
   color: #909090;
   font-size: 30rpx;
 }
