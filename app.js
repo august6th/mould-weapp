@@ -35,6 +35,7 @@ App({
                   success: function() {
                     console.log('Close wechat login...');
                     /*
+                    console.log('wechat login');
                     if (resp_dict.data.has_login != 1) {
                         that.wxLogin();
                     }

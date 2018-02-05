@@ -262,3 +262,20 @@
   align-items: center;
   color:#999;
 }
+
+.scroll-to-top {
+  z-index: 100;
+  position: fixed;  
+  right: 20rpx;  
+  bottom: 100rpx;
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.scroll-to-top-img {
+  background-color: #FF6A6A;
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+  opacity: 0.9;
+}

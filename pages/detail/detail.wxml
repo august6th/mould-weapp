@@ -108,7 +108,6 @@
       </view>
     </view>
   </view>
-
   <view class="page-tail">
       <block wx:if="{{login_flag}}">
       <view class="resp-input-cell">
@@ -120,4 +119,9 @@
         <navigator class="need-login" url="/pages/login/login">点此处登录之后，即可回复本帖</navigator>
       </block>
   </view>
+  <block wx:if="{{scroll_show}}">
+    <view class="scroll-to-top" bindtap="scrollToTop">
+      <image class="scroll-to-top-img" src="../../resources/image/top.png"/>
+    </view>
+  </block>
 </view>

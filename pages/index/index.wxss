@@ -137,3 +137,20 @@
 .article-ext-info .article-re view{
   margin-right:20rpx;
 }
+
+.scroll-to-top {
+  z-index: 100;
+  position: fixed;
+  right: 50rpx;
+  bottom: 50rpx;
+  width: 90rpx;
+  height: 90rpx;
+}
+
+.scroll-to-top-img {
+  background-color: #FF6A6A;
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+  opacity: 0.9;
+}
