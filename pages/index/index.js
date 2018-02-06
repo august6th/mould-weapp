@@ -21,7 +21,7 @@ Page({
     wx.checkSession({
       success: function (){
         console.log('check success');
-        var token = wx.getStorageSync("token");
+        var token = app.getSt("token", '');
         console.log(token);
         if (token == null || token == undefined || token == '') {
           wx.login({
@@ -40,13 +40,8 @@ Page({
                     var resp_dict = resp.data;
                     if (resp_dict.err_code == 0) {
                       console.log('Set token...');
-                      wx.setStorage({
-                        key: 'token',
-                        data: resp.data.data.token,
-                        success: function () {
-                          that.reloadIndex();
-                        }
-                      });
+                      app.putSt('token', resp.data.data.token, 7100);
+                      that.reloadIndex();
                     } else {
                       getApp().showSvrErrModal(resp);
                     }
@@ -79,13 +74,8 @@ Page({
                   var resp_dict = resp.data;
                   if (resp_dict.err_code == 0) {
                     console.log('Set token...');
-                    wx.setStorage({
-                      key: 'token',
-                      data: resp.data.data.token,
-                      success: function () {
-                        that.reloadIndex();
-                      }
-                    });
+                    app.putSt('token', resp.data.data.token, 7100);
+                    that.reloadIndex();
                   } else {
                     getApp().showSvrErrModal(resp);
                   }
