@@ -7,7 +7,7 @@ App({
         that.globalData.userInfo = res.userInfo;
       }
     })
-    that.get_token() // 获取token
+    //that.get_token() // 关闭 APP 的获取token
   },
 
   get_token: function() {
